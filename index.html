@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3415649485764504"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <title>QuickNotes - Free Online Notepad</title>
+  <meta name="description" content="QuickNotes is a fast, free, and easy online notepad. Highlight, underline, and save your notes with no sign-up needed.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="online notepad, quick notes, free notepad, highlight text, underline notes, browser editor">
+  <meta name="author" content="QuickNotes">
+  <meta property="og:title" content="QuickNotes - Free Online Notepad" />
+  <meta property="og:description" content="Write, highlight, and save notes instantly online for free." />
+  <meta property="og:url" content="https://yourdomain.com" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #7db9e8, #c6e2b5);
+    }
+
+    header {
+      background-color: #f1f1f1;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .toolbar {
+      background-color: #fafafa;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .toolbar button, .toolbar select {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    #editor {
+      width: 100%;
+      height: 60vh;
+      padding: 20px;
+      box-sizing: border-box;
+      border: none;
+      font-size: 16px;
+      background-color: white;
+      resize: none;
+    }
+
+    .ads {
+      margin: 20px auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>QuickNotes</h1>
+    <nav>
+      <span>File</span> |
+      <span>Edit</span> |
+      <span>Insert</span> |
+      <span>View</span> |
+      <span>Help</span>
+    </nav>
+  </header>
+
+  <!-- Top Ad Slot -->
+  <div class="ads">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <div class="toolbar">
+    <button onclick="newNote()">🗎 New</button>
+    <button onclick="saveNote()">💾 Save</button>
+    <button onclick="document.execCommand('cut')">✂️ Cut</button>
+    <button onclick="document.execCommand('copy')">📄 Copy</button>
+    <button onclick="document.execCommand('undo')">↩️ Undo</button>
+    <button onclick="document.execCommand('redo')">↪️ Redo</button>
+    <button onclick="document.execCommand('underline')">🔽 Underline</button>
+    <button onclick="highlightText()">🖍 Highlight</button>
+    <select onchange="changeFont(this.value)">
+      <option value="">Font</option>
+      <option value="Arial">Arial</option>
+      <option value="Courier New">Courier New</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Times New Roman">Times New Roman</option>
+    </select>
+    <select onchange="changeFontSize(this.value)">
+      <option value="">Size</option>
+      <option value="12px">12</option>
+      <option value="14px">14</option>
+      <option value="16px">16</option>
+      <option value="18px">18</option>
+      <option value="20px">20</option>
+    </select>
+    <button onclick="toggleFullscreen()">⛶ Fullscreen</button>
+  </div>
+
+  <div class="container">
+    <div contenteditable="true" id="editor" spellcheck="false" placeholder="Start typing here...">
+      Start typing here...
+    </div>
+  </div>
+
+  <!-- Bottom Ad Slot -->
+  <div class="ads">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+         data-ad-slot="0987654321"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <script>
+    function newNote() {
+      if (confirm("Start a new note? Unsaved changes will be lost.")) {
+        document.getElementById("editor").innerHTML = "Start typing here...";
+      }
+    }
+
+    function saveNote() {
+      const text = document.getElementById("editor").innerText;
+      const blob = new Blob([text], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "note.txt";
+      link.click();
+    }
+
+    function changeFont(font) {
+      document.getElementById("editor").style.fontFamily = font;
+    }
+
+    function changeFontSize(size) {
+      document.getElementById("editor").style.fontSize = size;
+    }
+
+    function toggleFullscreen() {
+      const elem = document.documentElement;
+      if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => alert(err.message));
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    function highlightText() {
+      document.execCommand("backColor", false, "yellow");
+    }
+  </script>
+
+</body>
+</html>
